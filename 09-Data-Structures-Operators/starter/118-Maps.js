@@ -29,7 +29,7 @@ console.log(restaurant);
 console.log(restaurant.size);
 // restaurant.clear();
 restaurant.set([1, 2], 'Test');
-console.log(restaurant);
+console.log(restaurant); // Map(4) {"name" => "Classico Italiano", 1 => "Firenze, Italy", "categories" => Array(4), 1 => "Lisbon, Portugal", Array(2) => "Test"}
 
 
 console.log(restaurant.get([1, 2])); // undefined
