@@ -34,3 +34,28 @@ console.log(announcement.replaceAll('door', 'gate')); // replaceAll() replaces a
 // It is working since node version 15.0.0
 
 console.log(announcement.replace(/door/g, 'gate')); // Regular expression
+
+// Booleans
+const plane1 = 'A320neo';
+console.log(plane1.includes('A320')); // true
+console.log(plane1.includes('Boeing')); // false
+
+console.log(plane1.startsWith('Airb')); // false
+console.log(plane.startsWith('A320')); // true
+
+if (plane.startsWith('A320') && plane.endsWith('neo')) {
+  console.log('Part of the NEW Airbus family');
+}
+
+// Practice exercise
+const checkBaggage = function(items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are NOT allowed on board');
+  } else {
+    console.log('Welcome aboard!');
+  }
+};
+checkBaggage('I have a laptop, some Food and a pocket Knife'); // You are NOT allowed on board
+checkBaggage('Socks and camera'); // Welcome aboard!
+checkBaggage('Got some snacks and a gun for protection'); // You are NOT allowed on board
