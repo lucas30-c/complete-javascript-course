@@ -16,3 +16,8 @@ What to know about Filter
 1. The returned array can have fewer elements than the original array, while the returned array will always have the **same number** of elements as the original array(but the values of those elements may be transformed).
 2. The callback function in the filter method should always return a boolean value (true or false). 
 3. The filter method is a great way to remove (or "delete") an item from an array without causing any side effects.
+
+What to know about Reduce
+1. The accumulator is like a snowball that keeps accumalating the value that we ultimately want to return
+2. The accumulator will be **the current result** of all the previous values
+3. Don't forget the initial value as the second parameter

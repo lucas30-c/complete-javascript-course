@@ -87,6 +87,12 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const calcPrintBalance = function (movements) {
+  const balance = movements.reduce((acc, mov, i, arr) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcPrintBalance(account1.movements);
+
 const user = 'Steven Thomas Williams'; // stw
 // const username = user.toLowerCase().split(' ') // ['steven', 'thomas', 'williams']
 
