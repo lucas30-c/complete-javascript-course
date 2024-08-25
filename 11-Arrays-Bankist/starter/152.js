@@ -61,45 +61,16 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
-  // innerHTML is a property that allows us to set the HTML content of an element
-  // to clear the content of an element, we can set the innerHTML property to an empty string
-  // textContent simply return the text itself, without any HTML
-  // while innerHTML returns the text with the HTML tags
-  containerMovements.innerHtml = '';
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// LECTURES
 
-  movements.forEach((mov, i) => {
-    const type = mov > 0 ? 'deposit' : 'withdrawal';
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
 
-    const html = `
-      <div class="movements__row">
-        <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
-        <div class="movements__value">${mov}</div>
-      </div>
-    `;
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-    // insertAdjacentHTML is a method that allows us to insert HTML into the DOM
-    containerMovements.insertAdjacentHTML('afterbegin', html);
-  });
-};
-
-displayMovements(account1.movements);
-
-const user = 'Steven Thomas Williams'; // stw
-// const username = user.toLowerCase().split(' ') // ['steven', 'thomas', 'williams']
-
-//Produce a side effect, adding a new property(username) to the object
-const createUsernames = function (accounts) {
-  accounts.forEach(acc => {
-    acc.username = acc.owner
-      .toLowerCase()
-      .split(' ')
-      .map(name => name.at(0)) // ['s', 't', 'w']
-      .join(''); // stw
-  });
-};
-
-createUsernames(accounts);
-console.log(accounts); // [{owner: 'Jonas Schmedtmann', movements: [200, 450, -400, 3000, -650, -130, 70, 1300], interestRate: 1.2, pin: 1111, username: 'js'}, ...]
+/////////////////////////////////////////////////
