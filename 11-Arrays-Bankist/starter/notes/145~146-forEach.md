@@ -1,4 +1,4 @@
-
+The forEach method has access to the current element, the current index, and the entire array
 
 One fundamental difference between the for-of loop and the forEach method is that the forEach method does not have a break or continue statement
 forEach will always loop over the entire array; there is nothing we can do to stop it
