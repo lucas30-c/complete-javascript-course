@@ -21,3 +21,26 @@ What to know about Reduce
 1. The accumulator is like a snowball that keeps accumalating the value that we ultimately want to return
 2. The accumulator will be **the current result** of all the previous values
 3. Don't forget the initial value as the second parameter
+
+To calculate the average:
+```  const averageDogsAdultAge = dogsAgesInAdult.reduce(
+    (acc, age, _, arr) => acc + age / arr.length,
+    0
+  );```
+
+Assume dogsAgesInAdult is [2, 4, 7].
+
+On the first iteration:
+
+acc = 0 + 2 / 3 (since arr.length is 3)
+acc = 0.6667
+On the second iteration:
+
+acc = 0.6667 + 4 / 3
+acc = 2.0
+On the third iteration:
+
+acc = 2.0 + 7 / 3
+acc = 4.3333
+
+(We are able to calculate the average immediately)
