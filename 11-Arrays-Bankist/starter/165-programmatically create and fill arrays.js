@@ -9,7 +9,7 @@ console.log(x);
 
 // Array.from
 const y = Array.from({ length: 7 }, () => 1);
-console.log(y);
+console.log(y); // [ 1, 1, 1, 1, 1, 1, 1 ]
 
 const z = Array.from({ length: 7 }, (_, i) => i + 1);
 console.log(z); // [ 1, 2, 3, 4, 5, 6, 7 ]
