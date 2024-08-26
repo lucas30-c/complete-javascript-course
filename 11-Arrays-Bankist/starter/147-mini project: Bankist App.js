@@ -145,3 +145,24 @@ const totalDepositsUSD = movements
     return mov * euroToUsd;
   })
   .reduce((acc, mov) => acc + mov, 0);
+
+  let currentAccount;
+
+  btnLogin.addEventListener('click', function (e) {
+    e.preventDefault();
+  
+    const currentAccount = accounts.find(
+      acc => acc.username === inputLoginUsername.value
+    );
+    console.log(currentAccount);
+  
+    if (currentAccount?.pin === Number(inputLoginPin.value)) {
+      labelWelcome.textContent = `Welcome back, ${
+        currentAccount.owner.split(' ')[0]
+      }`;
+      containerApp.style.opacity = 100;
+    }
+  
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+  })
