@@ -16,6 +16,10 @@ Therefore, all arrays have access to the map method.
 
 How do we create prototypes? How do we link objects to prototypes?
 1. Constructor functions
+   1. New {} is created
+   2. Function is called, this = {}
+   3. {} linked to prototype
+   4. function automatically return {}
 
 2. ES6 Classes
 
