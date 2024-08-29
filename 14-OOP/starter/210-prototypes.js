@@ -31,6 +31,8 @@ console.log(Person.prototype.isPrototypeOf(jonas)); // true
 console.log(Person.prototype.isPrototypeOf(matilda)); // true
 console.log(Person.prototype.isPrototypeOf(Person)); // false
 
+console.log(Person.prototype.constructor); // ƒ (firstName, birthYear) {...}
+
 Person.prototype.species = 'Homer Sapiens';
 console.log(jonas.species, matilda.species); // Homer Sapiens Homer Sapiens
 // But the species property is not on the jonas object itself(not its own property), it is on the prototype of the constructor function
