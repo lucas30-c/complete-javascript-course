@@ -31,10 +31,14 @@ class Account {
 
   deposit(val) {
     this.#movements.push(val);
+
+    // return this to make the method chainable
+    return this;
   }
 
   withdraw(val) {
     this.deposit(-val);
+    return this;
   }
 
   requestLoan(val) {
@@ -42,6 +46,8 @@ class Account {
       this.deposit(val);
       console.log('Loan approved');
     }
+
+    return this;
   }
 
   // 4) Private methods
@@ -60,3 +66,8 @@ acc1.deposit(250);
 acc1.withdraw(140);
 
 // console.log(acc1.#movements); // Uncaught SyntaxError: Private field '#movements' must be declared in an enclosing class
+
+
+// Chaining methods
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(2500).withdraw(4000);
+console.log(acc1.getMovements());
