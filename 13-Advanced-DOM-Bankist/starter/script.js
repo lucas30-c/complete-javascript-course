@@ -60,3 +60,20 @@ btnScrollTo.addEventListener('click', function (e) {
   // Modern way of scrolling
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+const h1 = document.querySelector('h1');
+
+const showAlert = function (e) {
+  alert('Great! You are reading the heading :D');
+};
+
+h1.addEventListener('mouseenter', showAlert);
+
+setTimeout(() => {
+  h1.removeEventListener('mouseenter', showAlert);
+  console.log('Event listener removed');
+}, 3000);
+
+// h1.onmouseenter = function(e) {
+//   alert('onmouseenter: Great! You are reading the heading :D');
+// }
