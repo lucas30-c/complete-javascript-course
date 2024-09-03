@@ -94,6 +94,7 @@ const randomColor = () =>
 
 // The bubbling phase is very useful because it allows us to implement event delegation
 
+/*
 document.querySelector('.nav__link').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
   // e.target: where the event originated(where the event first happened)
@@ -122,3 +123,35 @@ document.querySelector('.nav').addEventListener(
   },
   true
 );
+*/
+
+// P193 Page Navigation
+
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+// Downsides: will create a lot of event listeners, which is not very efficient
+
+// Better solution: Event Delegation
+
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  console.log(e.target);
+  // e.target: where the event originated(where the event first happened)
+
+  // Matching strategy
+  if (e.target.classList.contains('nav__link')) {
+    e.preventDefault();
+    console.log('LINK');
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({
+      behavior: 'smooth',
+    });
+  }
+});
