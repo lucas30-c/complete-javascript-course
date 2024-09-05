@@ -221,3 +221,20 @@ const handleHover = function (e) {
 
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
+
+// Note
+// pageY, screenY, clientY is on the event object
+
+
+// Sticky navigation
+const initialCords = section1.getBoundingClientRect();
+
+// Using the scroll event is not very efficient, because it fires whenever we scroll
+// This makes a pretty bad performance
+window.addEventListener('scroll', function () {
+  console.log('scollY', window.scrollY);
+
+  if (window.scrollY > initialCords.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+  
+});
