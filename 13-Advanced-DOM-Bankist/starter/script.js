@@ -190,6 +190,8 @@ const nav = document.querySelector('.nav');
 // The opposite of mouseenter is mouseleave
 // The opposite of mouseover is mouseout
 const handleHover = function (e) {
+  console.log(this, e.currentTarget);
+
   if (e.target.classList.contains('nav__link')) {
     const link = e.target;
     // Dom traversing
