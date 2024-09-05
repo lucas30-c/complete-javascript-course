@@ -176,9 +176,46 @@ tabsContainer.addEventListener('click', function (e) {
   clicked.classList.add('operations__tab--active');
   tabsContent.forEach(c => c.classList.remove('operations__content--active'));
 
-
   // Activate content area
   document
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
 });
+
+const nav = document.querySelector('.nav');
+
+// Menu fade animation
+// mouseenter vs mouseover
+// mouseenter: will not bubble up, mouseover will bubble up
+// The opposite of mouseenter is mouseleave
+// The opposite of mouseover is mouseout
+const handleHover = function (e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    // Dom traversing
+    // Going to the parent and then selecting the siblings
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelectorAll('img');
+
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = this;
+    });
+
+    logo.forEach(el => {
+      el.style.opacity = this;
+    });
+  }
+};
+
+// nav.addEventListener('mouseover', function (e) {
+//   handleHover(e, 0.5);
+// });
+
+// nav.addEventListener('mouseout', function (e) {
+//   handleHover(e, 1);
+// });
+
+// Better way: Using the bind method
+
+nav.addEventListener('mouseover', handleHover.bind(0.5));
+nav.addEventListener('mouseout', handleHover.bind(1));
