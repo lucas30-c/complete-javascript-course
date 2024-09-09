@@ -225,16 +225,67 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 // Note
 // pageY, screenY, clientY is on the event object
 
-
 // Sticky navigation
-const initialCords = section1.getBoundingClientRect();
+// const initialCords = section1.getBoundingClientRect();
 
 // Using the scroll event is not very efficient, because it fires whenever we scroll
 // This makes a pretty bad performance
-window.addEventListener('scroll', function () {
-  console.log('scollY', window.scrollY);
+// window.addEventListener('scroll', function () {
+//   console.log('scollY', window.scrollY);
 
-  if (window.scrollY > initialCords.top) nav.classList.add('sticky');
+//   if (window.scrollY > initialCords.top) nav.classList.add('sticky');
+//   else nav.classList.remove('sticky');
+// });
+
+/*
+  This API allows us to observe changes in the intersection of a target element with an ancestor element or with a top-level document's viewport.
+  (observing changes to the way that a certain target element intersects with another element or with the viewport)
+*/
+
+// const obsCallback = function (entries, observer) {
+//   entries.forEach(entry => {
+//     console.log(entry);
+//   });
+// };
+
+/*
+
+  root: null
+
+  setting `root: null` means that the viewport (i.e., the browser window or visible portion of the web page) is used as the reference point for determining the visibility of the target element.
+
+  root: This property defines the element that is used as the reference or boundary within which the target element's visibility is checked. If you specify a particular element, the visibility of the target element will be determined relative to that specific element.
+*/
+
+/*
+  Whenver the target is intersecting the viewport at 10%, the callback function will be called, no matter if we are scrolling up or down
+*/
+
+// const obsOptions = {
+//   // The root is the element that the target is intersecting with
+//   // root 是目标元素与之相交的元素
+//   root: null,
+//   // The threshold is the percentage of intersection at which the observer callback will be called
+//   // threshold 是当目标元素与 root 元素相交的百分比，达到该值时会调用观察者的回调函数
+//   threshold: [0, 0.2],
+// };
+
+// const observer = new IntersectionObserver(obsCallback, obsOptions);
+// observer.observe(section1);
+
+const header = document.querySelector('.header');
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  console.log(entry);
+
+  if (!entry.isIntersecting) nav.classList.add('sticky');
   else nav.classList.remove('sticky');
-  
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${nav.getBoundingClientRect().height}px`,
 });
+headerObserver.observe(header);
