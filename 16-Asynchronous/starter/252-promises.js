@@ -43,11 +43,19 @@ const getCountryData = function (country) {
 
       return response.json();
       // This will return another promise, which will be resolved with the data parsed from the json
+      // Whatever we return will be the fulfilled value of the Promise
     })
-    .then(function (data) {
-      console.log(data);
+    .then(data => {
       renderCountry(data[0]);
-    });
+      const neighbour = data[0].borders[0];
+
+      if (!neighbour) return;
+
+      // Country 2
+      return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
+    })
+    .then(res => res.json())
+    .then(data => renderCountry(data, 'neighbour'));
 };
 
 getCountryData('portugal');
